@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "usrId": "1",
+            "likes": 4,
+            "crtDt": "1673963472",
+            "content": "Day 1 of developing test website"
+        },
+        {
+            "id": "2",
+            "usrId": "2",
+            "likes": 0,
+            "crtDt": "1673963472",
+            "content": "How to handle long messages and multi lines"
+        },        {
+            "id": "3",
+            "usrId": "2",
+            "likes": 0,
+            "crtDt": "1673963472",
+            "content": "<b>test bold text</b>"
+        }
+    ]
+}
