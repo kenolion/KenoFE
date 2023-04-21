@@ -10,13 +10,8 @@ type MyState = {
 
 class Home extends React.Component<HomeProps, MyState> {
   data: any;
-  constructor(home: HomeProps) {
-    super(home);
-    this.data = require("../Resource/temp.json");
-  }
-
   render() {
-    return <Timeline posts={this.data.data}></Timeline>;
+    return <Timeline ></Timeline>; //posts={this.data.data}
   }
 }
 

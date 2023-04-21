@@ -1,12 +1,6 @@
 import "./App.scss";
 import { Outlet } from "react-router-dom";
-import {
-  Collapse,
-  Container,
-  Nav,
-  Navbar,
-  NavDropdown,
-} from "react-bootstrap";
+import { Col, Container, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
@@ -14,7 +8,7 @@ const App = () => {
     <div className="App">
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="/home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="/home">KenoWeb</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -27,11 +21,22 @@ const App = () => {
                 {/* <NavDropdown.Item href="/dfk">DFK</NavDropdown.Item> */}
               </NavDropdown>
             </Nav>
+            <Nav>
+              <Nav.Link href="#deets">More deets</Nav.Link>
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      <Outlet />
+      <Container>
+          <Row>
+            <Col xs={15}>
+               <Outlet />
+            </Col>
+          </Row>
+      </Container>
+      <footer className="bg-dark text-center py-3 text-light fixed-bottom">
+        <p>&copy; 2023 My Website. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
