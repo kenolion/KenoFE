@@ -5,6 +5,7 @@
             "usrId": "1",
             "likes": 4,
             "crtDt": "1673963472",
+            "title": "Day 1 test",
             "content": "Day 1 of developing test website"
         },
         {
@@ -12,12 +13,14 @@
             "usrId": "2",
             "likes": 0,
             "crtDt": "1673963472",
+            "title": "temp",
             "content": "How to handle long messages and multi lines"
         },        {
             "id": "3",
             "usrId": "2",
             "likes": 0,
             "crtDt": "1673963472",
+            "title": "hmmmm",
             "content": "<b>test bold text</b>"
         }
     ]

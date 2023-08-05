@@ -1,28 +1,56 @@
-import React from "react";
-import { FunctionComponent } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import Post from "../Model/Post";
 import PostComponent from "./PostComponent";
+import {  useNavigate } from "react-router-dom";
 
-interface TimelineProp {
-  posts: Post[];
-}
+const TimelineComponent = () => {
+  const [data, setData] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  let navigate = useNavigate();
+  
+  // fetches data from http://localhost:4000/post
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/post");
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      const data = await response.json();
+      setData(data);
+      setLoading(false);
+    } catch (error) {
+      setError((error as Error).message);
+      setLoading(false);
+      console.log(error);
+    }
+  };
 
-const TimelineComponent: FunctionComponent<TimelineProp> = ({ posts }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [title, setTitle] = React.useState(posts);
+  const navToPost = () => {
+    navigate("/addPost");
+  }
 
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <>
       <Container>
         <Row>
-          <Col></Col>
+          <Button onClick={navToPost}>Add Post</Button>
+        </Row>
+        <Row>
           <Col xs={10}>
-            {posts.map((p) => {
-              return <PostComponent post = {p}></PostComponent>;
-            })}
+            {loading || data === null
+              ?     <Spinner className="center" animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+              : data.map((p) => {
+                  return <PostComponent post={p}></PostComponent>;
+                })}
+            {error && <div>{error}</div>}
           </Col>
-          <Col></Col>
         </Row>
       </Container>
     </>

@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Home from "./pages/Home";
@@ -7,17 +7,17 @@ import NftGen from "./pages/NftGen";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import './App.scss';
-import { DFKHome } from "./pages/DFK/DFKHome";
+import "./App.scss";
+import AddPostComponent from "./pages/component/AddPostComponent";
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="/home" element={<Home info='info'/>} />
+        <Route path="/home" element={<Home info="info" />} />
+        <Route path="/addPost" element={<AddPostComponent />} />
         <Route path="/About" element={<About />} />
         <Route path="/nft-gen" element={<NftGen />} />
-        <Route path="/dfk" element={<DFKHome />} />
       </Route>
     </Routes>
   </BrowserRouter>,

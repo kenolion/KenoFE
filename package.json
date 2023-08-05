@@ -1,5 +1,5 @@
 {
-  "name": "nft-gen-app",
+  "name": "keno-fe",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,6 +44,6 @@
   },
   "devDependencies": {
     "@types/react-dom": "^18.0.5",
-    "react-router-dom": "^6.0.2"
+    "react-router-dom": "^6.10.0"
   }
 }

@@ -1,2 +1,1 @@
-# NFTGenerator
-Generate NFT by defining attributes easily
+Frontend made to showcase and navigate random stuff made by me
