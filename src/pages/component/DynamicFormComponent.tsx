@@ -50,7 +50,7 @@ class DynamicFormComponent extends React.Component<
         {Object.keys(fields).map((key) => {
           const fieldType = fields[key];
           return (
-            <Form.Group as={Col} key={key}>
+            <Form.Group className="mb-3" as={Col} key={key}>
               <Form.Label htmlFor={key}>{key}</Form.Label>
               {fieldType === 'text' && (
                 <Form.Control

@@ -1,29 +1,19 @@
 import React from "react";
 import DynamicFormComponent from "./DynamicFormComponent";
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
-interface AddPostProp {}
-interface AddPostState {}
+const AddPostComponent = () => {
+  let navigate = useNavigate();
 
-class AddPostComponent extends React.Component<AddPostProp, AddPostState> {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  //const [title, setTitle] = React.useState(posts);
-  formFields = {
+  const formFields = {
     title: "text",
     content: "textarea",
   };
 
-  constructor(addPost: AddPostProp) {
-    super(addPost);
-    this.state = {
-      data: null,
-      loading: false,
-    };
-  }
-  //submit's http://localhost:4000/add POST api
-  submit = (formData: any) => {
-    const form = {authorEmail:"veikeith13@gmail.com",...formData};
+  const submit = (formData: any) => {
 
+    const form = {authorEmail:"veikeith13@gmail.com",...formData};
+    
     const response = fetch("http://localhost:4000/add", {
       method: "POST",
       headers: {
@@ -38,6 +28,7 @@ class AddPostComponent extends React.Component<AddPostProp, AddPostState> {
     })
     .then(data => {
       console.log(data);
+      navigate("/home");
     })
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
@@ -46,27 +37,12 @@ class AddPostComponent extends React.Component<AddPostProp, AddPostState> {
     console.log(response);
   }
 
-  // async componentDidMount() {
-  //   const response = await fetch("http://localhost:4000/post");  //
-  //       if (!response.ok) {
-  //     throw new Error("Error fetching data");
-  //   }
-  //   const jsonData = await response.json();
-  //  // const response = require("../../Resource/temp.json");
-
-
-  //  // const jsonData = response.data; //await response.json();
-
-  //   this.setState({ data: jsonData, loading: false });
-  // }
-
-  render() {
-    return (
-      <>
-        <DynamicFormComponent fields={this.formFields} onSubmit={this.submit} />
-      </>
-    );
-  }
+  return (
+    <>
+      <DynamicFormComponent fields={formFields} onSubmit={submit} />
+    </>
+  );
 }
+
 
 export default AddPostComponent;
